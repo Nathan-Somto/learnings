@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Bio Form</title>
+  </head>
+  <body>
+    <form>
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" placeholder="Name" />
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" placeholder="Email" />
+      <label for="dob">DOB</label>
+      <input type="date" name="dob" id="dob" placeholder="DOB" />
+      <button>Submit</button>
+    </form>
+    <script>
+      const form = document.querySelector("form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const data = {};
+        for (const [key, value] of formData.entries()) {
+          data[key] = value;
+        }
+        // post the data to the server
+        fetch(`${window.origin}/people`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }).then((res) => {
+          if (res.ok) {
+            window.location.href = `${window.origin}/people`;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
