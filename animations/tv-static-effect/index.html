@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TV Static Animation Effect</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #000;
+      }
+
+      .page__container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .tv__emoji {
+        font-size: 10rem;
+      }
+      .tv__static__overlay {
+        position: absolute;
+        inset: -200%;
+        background: url("./noise.jpg") center center;
+        animation: tvStatic 0.3s linear infinite both;
+        background-size: cover;
+        z-index: 5;
+        opacity: 13%;
+      }
+      @keyframes tvStatic {
+        0% {
+          transform: translate(-10%, -10%);
+        }
+        25% {
+          transform: translate(5%, 5%);
+        }
+        50% {
+          transform: translate(-5%, -5%);
+        }
+        75% {
+          transform: translate(5%, 5%);
+        }
+        100% {
+          transform: translate(-10%, -10%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page__container">
+      <div class="tv__static__overlay"></div>
+      <p class="tv__emoji">📺</p>
+    </div>
+  </body>
+</html>
