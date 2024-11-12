@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animating Gradients</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(90deg, rgba(2,0,36,1) 8%, rgba(121,9,87,1) 71%, rgba(132,0,255,1) 98%);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+            
+        }
+        .container__text {
+            font-size: 3rem;
+            color: #fff;
+            transform: skew(-10deg);
+            animation: skew-text 2s linear infinite alternate-reverse;
+        }
+        @keyframes skew-text {
+            0% {
+                transform: skew(-10deg);
+            }
+            100% {
+                transform: skew(10deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="container__text">Animating Gradient</h1>
+    </div>
+</body>
+</html>
